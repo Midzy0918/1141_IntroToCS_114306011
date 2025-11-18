@@ -1,0 +1,91 @@
+.page-head{
+	background-color: lightblue;
+  	text-align: center;
+	padding: 1.5em 1em;;
+}
+.page-title {
+  font-family: "Georgia", serif; 
+  font-size: 2.2em;
+  margin-top: 2em;
+}
+
+body {
+  color: #222222;                
+  background-color: #D3D3D3;      
+  font-family: "Arial", sans-serif;
+}
+
+.navbar {
+  background-color: #2f3b45;
+  padding: 0.4em 0;
+}
+.navbar ul{
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+.navbar li {
+  position: relative;
+  padding: 0.6em 1.2em;
+}
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.dropdown {
+  position: relative; /* establish stacking context for absolute child */
+}
+
+/* hidden dropdown content by default */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;       /* right under the services button */
+  left: 0;
+  background-color: #32414d;
+  width: 10em;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+/* dropdown item style */
+.dropdown-content a {
+  display: block;
+  padding: 0.8em;
+  color: white;
+}
+
+/* show hover */
+.navbar a:hover{
+	background-color: lightgray;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-content a:hover{
+	background-color: lightblue;
+}
+
+
+@media all {
+  body {
+    font-size: 1em;
+  }
+}
+
+@media print {
+  body {
+    background-color: white; 
+    color: black;
+  }
+
+  .navbar {
+    display: none;
+  }
+  .page-title {
+    font-family: "Times New Roman", serif;
+  }
+}
