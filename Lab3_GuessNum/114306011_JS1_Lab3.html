@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>114306011_Number Guessing Game</title>
+</head>
+<body>
+
+<h1>114306011_Number Guessing Game</h1>
+
+<div id="message"></div>
+<div id="image"></div> <!-- 放圖片的空 div -->
+
+<script>
+window.onload = function () {
+
+    var answer = Math.floor(Math.random() * 100) + 1;
+
+    var low = 1;
+    var high = 100;
+
+    var chances = 7;
+
+    var msg = document.getElementById("message");
+    var imgDiv = document.getElementById("image");
+
+    while (chances > 0) {
+
+        var input = window.prompt("請輸入你猜的數字 (" + low + " 到 " + high + ")\n剩餘次數：" + chances);
+
+        if (input === null) {
+            alert("你已退出遊戲。");
+            return;
+        }
+
+        input = input.trim();
+
+        if (input === "" || isNaN(input)) {
+            alert("請輸入有效的數字！");
+            continue;
+        }
+
+        var guess = Number(input);
+
+        if (guess < low || guess > high) {
+            alert("超出範圍！請輸入 " + low + " 到 " + high + " 的數字。");
+            continue;
+        }
+
+        if (guess === answer) {
+            imgDiv.innerHTML = '<img src="correct.jpg" alt="correct">';
+            msg.innerHTML = "<h2>恭喜你答對了！答案是 " + answer + "</h2>";
+            alert("答對了！遊戲結束！");
+            return;
+        }
+        //調整上下限範圍!
+        if (guess < answer) {
+            low = guess;
+        } else {
+            high = guess;
+        }
+
+        chances--;
+    }
+
+    // 用 innerHTML 顯示 wrong.jpg
+    imgDiv.innerHTML = '<img src="wrong.jpg" alt="wrong">';
+    msg.innerHTML = "<h2>很可惜，答案是 " + answer + "</h2>";
+    alert("很可惜，用完所有機會了！答案是 " + answer);
+
+};
+</script>
+
+</body>
+</html>
