@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>114306011_HW7_1A2B</title>
+
+	<style>
+        body {
+            font-family: Arial;
+            margin: 30px;
+        }
+        #record {
+            margin-top: 20px;
+            white-space: pre-line; /* 保留換行 */
+        }
+    </style>
+
+</head>
+<body>
+
+<h1>114306011_HW7_1A2B</h1>
+
+<p>Enter 4 unique numbers:
+    <input type="text" id="userInput">
+    <button onclick="play()">Guess!</button>
+</p>
+
+<h3>Game Record :</h3>
+<div id="record"></div>
+
+<script>
+
+  // Generate the answer
+function generateAnswer() {
+    let digits = [0,1,2,3,4,5,6,7,8,9];
+    let answer = "";
+
+    for (let i = 0; i < 4; i++) {
+        let idx = Math.floor(Math.random() * digits.length);
+        answer += digits[idx];
+        digits.splice(idx, 1);  // remove used digit
+    }
+    return answer;
+}
+
+
+   //Validate player input
+function isValid(str) {
+    // 必須是 4 位
+    if (str.length !== 4) {
+        alert("Input must be EXACTLY 4 digits!");
+        return false;
+    }
+
+    // 必須全部是數字
+    for (let i = 0; i < 4; i++) {
+        if (str[i] < "0" || str[i] > "9") {
+            alert("All characters must be digits!");
+            return false;
+        }
+    }
+
+    // 必須不重複
+    for (let i = 0; i < 4; i++) {
+        for (let j = i + 1; j < 4; j++) {
+            if (str[i] === str[j]) {
+                alert("Digits cannot repeat!");
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
+
+   //Count A's and B's
+function checkAB(guess, ans) {
+    let A = 0, B = 0;
+
+    for (let i = 0; i < 4; i++) {
+        if (guess[i] === ans[i]) {
+            A++;
+        } else if (ans.includes(guess[i])) {
+            B++;
+        }
+    }
+    return A + "A" + B + "B";
+}
+
+
+  // Main game flow
+let answer = generateAnswer();
+let attempts = 0;
+
+function play() {
+    let inputField = document.getElementById("userInput");
+    let guess = inputField.value.trim();
+
+    if (!isValid(guess)) {
+        inputField.value = "";
+        return;
+    }
+
+    attempts++;
+
+    let result = checkAB(guess, answer);
+
+    // display record
+    let recordDiv = document.getElementById("record");
+    recordDiv.innerHTML += "第" + attempts + "次: " + guess + " — " + result + "<br>";
+
+    // clear input field
+    inputField.value = "";
+
+    if (result === "4A0B") {
+        alert("Correct! You guessed it in " + attempts + " attempts!");
+    }
+}
+</script>
+
+</body>
+</html>
