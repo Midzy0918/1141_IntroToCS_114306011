@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* 保持內容在頂部 */
+    min-height: 100vh;
+    margin: 20px;
+    background-color: #f4f4f4;
+}
+
+#container {
+    width: 80%;
+    max-width: 800px;
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    border: 1px dashed #ccc;
+}
+
+h1 {
+    text-align: center;
+    padding: 10px;
+    border: 1px dotted #999;
+    display: inline-block;
+}
+
+#input-section {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#input-section input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    text-align: left;
+    width: 150px;
+}
+
+#input-section button {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+/* 成績表格樣式 */
+#grades-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#grades-table th, #grades-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+#grades-table thead th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+#grades-table tfoot th, #grades-table tfoot td {
+    background-color: #e9e9e9;
+    font-weight: bold;
+}
